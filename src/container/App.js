@@ -1,68 +1,55 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./App.css";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Products from "../components/Products/Products";
+import {
+  setSearchTerm,
+  getArticlesFromAPI,
+  clearArticles
+} from "../actions/actions";
 // import Wishlists from '../components/Wishlists/Wishlists'
 
-const API = "https://www.adidas.co.uk/api/search/suggestions";
+const mapStateToProps = state => {
+  return {
+    searchTerm: state.changeSearchTerm.searchTerm,
+    articles: state.searchArticles.articles,
+    isLoading: state.searchArticles.isLoading,
+    hasFailed: state.searchArticles.hasFailed,
+    errorMessage: state.searchArticles.errorMessage
+  };
+};
 
+const mapDispatchToProps = dispatch => {
+  return {
+    updateSearchTerm: event => dispatch(setSearchTerm(event.target.value)),
+    getArticlesData: searchTerm => dispatch(getArticlesFromAPI(searchTerm)),
+    clearArticles: () => dispatch(clearArticles())
+  };
+};
 class App extends Component {
-  state = {
-    articles: [],
-    searchTerm: ""
-  };
-
-  updateSearchTerm = event => {
-    const term = event.target.value;
-    this.setState({
-      searchTerm: term
-    });
-  };
-
-  clearArticles = () => {
-    this.setState({
-      articles: []
-    });
-  };
-
   searchArticles = () => {
-    const { searchTerm } = this.state;
-    searchTerm.length === 0
-      ? this.clearArticles()
-      : this.getArticlesFromAPI(searchTerm);
+    const { searchTerm, getArticlesData, clearArticles } = this.props;
+    searchTerm.length === 0 ? clearArticles() : getArticlesData(searchTerm);
   };
 
-  getArticlesFromAPI = searchQuery => {
-    fetch(`${API}/${searchQuery}`)
-      .then(response => response.json())
-      .then(res => {
-        // check if the search item exist in the api
-        if (res.products.length > 0) {
-          const productsData = res.products;
-          console.log(productsData);
-          this.setState({ articles: productsData });
-          console.log(this.state.articles);
-        } else {
-          this.clearArticles();
-          alert("No articles found for the search query");
-        }
-      })
-      .catch(err => alert(err.message));
-  };
   render() {
+    const { articles, updateSearchTerm } = this.props;
     return (
       <div className="App">
         <br />
-        <SearchBar
-          update={this.updateSearchTerm}
-          search={this.searchArticles}
-        />
+        <br />
+        <SearchBar update={updateSearchTerm} search={this.searchArticles} />
         <br />
         <br />
-        <Products items={this.state.articles} />
+        <Products items={articles} />
       </div>
     );
   }
 }
 
-export default App;
+const connectProps = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+export default connectProps(App);
