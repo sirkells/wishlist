@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteWishlist, getWishlists } from "../../actions/actions";
+import {
+  deleteWishlist,
+  getWishlists,
+  addToWishlist
+} from "../../actions/actions";
 import Product from "../Product/Product";
 
 const mapStateToProps = state => {
@@ -12,7 +16,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     deleteWishlist: id => dispatch(deleteWishlist(id)),
-    getWishlists: () => dispatch(getWishlists())
+    getWishlists: () => dispatch(getWishlists()),
+    addToWishlist: data => dispatch(addToWishlist(data))
   };
 };
 
@@ -22,8 +27,9 @@ class WishLists extends Component {
     const { getWishlists } = this.props;
     getWishlists();
   }
+  updateWishlist = id => this.props.deleteWishlist(id);
   render() {
-    const { wishlistDB, updateWishlist } = this.props;
+    const { wishlistDB } = this.props;
     const wishlistsArray = wishlistDB.map(item => {
       return (
         <Product
@@ -34,7 +40,7 @@ class WishLists extends Component {
           iconType={"trash alternate outline"}
           color={"red"}
           title={"Remove from Wishlists"}
-          updateWishlist={updateWishlist}
+          updateWishlist={this.updateWishlist}
           actionType="delete"
         />
       );

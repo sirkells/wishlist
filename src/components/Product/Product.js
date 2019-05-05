@@ -26,7 +26,7 @@ const Product = props => {
       </div>
       <div
         className={`ui bottom attached ${color} button`}
-        onClick={() => updateWishlist(actionType, data)}
+        onClick={() => updateWishlist(data)}
       >
         <i className={`${iconType} icon`} />
         {title}

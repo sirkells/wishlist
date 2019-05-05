@@ -42,17 +42,16 @@ class App extends Component {
     searchTerm.length === 0 ? clearArticles() : getArticlesData(searchTerm);
   };
 
-  updateWishlist = (actionType, data) => {
-    actionType === "add"
-      ? this.props.addToWishlist(data)
-      : this.props.deleteWishlist(data);
-  };
+  updateWishlist = id => this.props.addToWishlist(id);
 
   render() {
     const { articles, updateSearchTerm, getWishlists } = this.props;
     const { searchArticles, updateWishlist } = this;
     return (
       <div className="App">
+        <br />
+        <br />
+        <br />
         <br />
         <button
           onClick={() => {
@@ -62,7 +61,7 @@ class App extends Component {
         >
           clear
         </button>
-        <br />
+
         <SearchBar update={updateSearchTerm} search={searchArticles} />
         <br />
         <Wishlists updateWishlist={updateWishlist} />
