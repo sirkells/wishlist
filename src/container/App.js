@@ -3,10 +3,14 @@ import { connect } from "react-redux";
 import "./App.css";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Products from "../components/Products/Products";
+import Wishlists from "../components/Wishlists/Wishlists";
 import {
   setSearchTerm,
   getArticlesFromAPI,
-  clearArticles
+  clearArticles,
+  addToWishlist,
+  deleteWishlist,
+  getWishlists
 } from "../actions/actions";
 // import Wishlists from '../components/Wishlists/Wishlists'
 
@@ -16,7 +20,8 @@ const mapStateToProps = state => {
     articles: state.searchArticles.articles,
     isLoading: state.searchArticles.isLoading,
     hasFailed: state.searchArticles.hasFailed,
-    errorMessage: state.searchArticles.errorMessage
+    errorMessage: state.searchArticles.errorMessage,
+    DB: state.updateWishlist.wishlistDB
   };
 };
 
@@ -24,25 +29,45 @@ const mapDispatchToProps = dispatch => {
   return {
     updateSearchTerm: event => dispatch(setSearchTerm(event.target.value)),
     getArticlesData: searchTerm => dispatch(getArticlesFromAPI(searchTerm)),
-    clearArticles: () => dispatch(clearArticles())
+    clearArticles: () => dispatch(clearArticles()),
+    addToWishlist: data => dispatch(addToWishlist(data)),
+    deleteWishlist: data => dispatch(deleteWishlist(data)),
+    getWishlists: () => dispatch(getWishlists())
   };
 };
+
 class App extends Component {
   searchArticles = () => {
     const { searchTerm, getArticlesData, clearArticles } = this.props;
     searchTerm.length === 0 ? clearArticles() : getArticlesData(searchTerm);
   };
 
+  updateWishlist = (actionType, data) => {
+    actionType === "add"
+      ? this.props.addToWishlist(data)
+      : this.props.deleteWishlist(data);
+  };
+
   render() {
-    const { articles, updateSearchTerm } = this.props;
+    const { articles, updateSearchTerm, getWishlists } = this.props;
+    const { searchArticles, updateWishlist } = this;
     return (
       <div className="App">
         <br />
+        <button
+          onClick={() => {
+            localStorage.clear();
+            getWishlists();
+          }}
+        >
+          clear
+        </button>
         <br />
-        <SearchBar update={updateSearchTerm} search={this.searchArticles} />
+        <SearchBar update={updateSearchTerm} search={searchArticles} />
         <br />
+        <Wishlists updateWishlist={updateWishlist} />
         <br />
-        <Products items={articles} />
+        <Products items={articles} updateWishlist={updateWishlist} />
       </div>
     );
   }

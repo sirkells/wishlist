@@ -4,10 +4,49 @@ import {
   FETCH_FAILED,
   FETCH_STARTED,
   SEARCH_BOX_CLEARED,
-  NO_ITEM_FOUND
+  NO_ITEM_FOUND,
+  ARTICLE_ADDED_TO_WISHLIST,
+  DELETE_WISHLIST,
+  GET_WISHLISTS
 } from "../constants";
 
 const API = "https://www.adidas.co.uk/api/search/suggestions";
+let store = JSON.parse(localStorage.getItem("data") || "[]");
+
+const addToDB = data => {
+  store.push(data);
+  localStorage.setItem("data", JSON.stringify(store));
+  console.log(store);
+  return store;
+};
+
+const deleteFromDB = data => {
+  store = store.filter(article => article.id !== data);
+  console.log(store);
+  localStorage.setItem("data", JSON.stringify(store));
+  console.log(store);
+  return store;
+};
+
+export const getWishlists = () => {
+  return {
+    type: GET_WISHLISTS
+    //payload: store
+  };
+};
+export const addToWishlist = article => dispatch => {
+  dispatch({
+    type: ARTICLE_ADDED_TO_WISHLIST,
+    payload: addToDB(article)
+  });
+};
+
+export const deleteWishlist = id => dispatch => {
+  dispatch({
+    type: DELETE_WISHLIST,
+    payload: deleteFromDB(id)
+  });
+};
 
 export const setSearchTerm = text => {
   return {
@@ -40,7 +79,7 @@ export const getArticlesFromAPI = searchQuery => dispatch => {
         dispatch({
           type: NO_ITEM_FOUND
         });
-        alert("No item found for searched word");
+        // alert("No item found for searched word");
       }
     })
     .catch(err =>

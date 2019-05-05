@@ -4,8 +4,32 @@ import {
   FETCH_FAILED,
   FETCH_STARTED,
   SEARCH_BOX_CLEARED,
-  NO_ITEM_FOUND
+  NO_ITEM_FOUND,
+  ARTICLE_ADDED_TO_WISHLIST,
+  DELETE_WISHLIST,
+  GET_WISHLISTS
 } from "../constants";
+
+const wishlistState = {
+  //wishlistDB: JSON.parse(localStorage.getItem("data") || "[]")
+  wishlistDB: []
+};
+
+export const updateWishlist = (state = wishlistState, action = {}) => {
+  switch (action.type) {
+    case GET_WISHLISTS:
+      return {
+        ...state,
+        wishlistDB: JSON.parse(localStorage.getItem("data") || "[]")
+      };
+    case ARTICLE_ADDED_TO_WISHLIST:
+      return { ...state, wishlistDB: action.payload };
+    case DELETE_WISHLIST:
+      return { ...state, wishlistDB: action.payload };
+    default:
+      return state;
+  }
+};
 
 const initialState = {
   searchTerm: ""
