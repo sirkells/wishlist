@@ -3,14 +3,13 @@ import { connect } from "react-redux";
 import "./App.css";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Products from "../components/Products/Products";
-import Wishlists from "../components/Wishlists/Wishlists";
+
 import {
   setSearchTerm,
   getArticlesFromAPI,
   clearArticles,
   addToWishlist,
-  deleteWishlist,
-  getWishlists
+  deleteWishlist
 } from "../actions/actions";
 // import Wishlists from '../components/Wishlists/Wishlists'
 
@@ -31,8 +30,7 @@ const mapDispatchToProps = dispatch => {
     getArticlesData: searchTerm => dispatch(getArticlesFromAPI(searchTerm)),
     clearArticles: () => dispatch(clearArticles()),
     addToWishlist: data => dispatch(addToWishlist(data)),
-    deleteWishlist: data => dispatch(deleteWishlist(data)),
-    getWishlists: () => dispatch(getWishlists())
+    deleteWishlist: data => dispatch(deleteWishlist(data))
   };
 };
 
@@ -45,7 +43,7 @@ class App extends Component {
   updateWishlist = id => this.props.addToWishlist(id);
 
   render() {
-    const { articles, updateSearchTerm, getWishlists } = this.props;
+    const { articles, updateSearchTerm } = this.props;
     const { searchArticles, updateWishlist } = this;
     return (
       <div className="App">
@@ -53,18 +51,8 @@ class App extends Component {
         <br />
         <br />
         <br />
-        <button
-          onClick={() => {
-            localStorage.clear();
-            getWishlists();
-          }}
-        >
-          clear
-        </button>
-
         <SearchBar update={updateSearchTerm} search={searchArticles} />
         <br />
-        <Wishlists updateWishlist={updateWishlist} />
         <br />
         <Products items={articles} updateWishlist={updateWishlist} />
       </div>

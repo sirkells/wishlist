@@ -45,7 +45,20 @@ class WishLists extends Component {
         />
       );
     });
-    return <div className="ui centered cards">{wishlistsArray}</div>;
+    return (
+      <div>
+        <button
+          className="ui red button"
+          onClick={() => {
+            localStorage.clear();
+            this.props.getWishlists();
+          }}
+        >
+          Remove All
+        </button>
+        <div className="ui centered cards">{wishlistsArray}</div>
+      </div>
+    );
   }
 }
 const connectProps = connect(

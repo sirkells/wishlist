@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import { Router, Switch, Route } from "react-router-dom";
-import createBrowserHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import "./index.css";
 import "semantic-ui-css/semantic.min.css";
 import App from "./container/App";
