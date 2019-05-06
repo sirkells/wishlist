@@ -1,6 +1,6 @@
 version: "3"
 services:
-  wishlist:
+  prod:
     build: .
     restart: always
     ports:
