@@ -5,10 +5,7 @@ services:
     restart: always
     ports:
       - 8080:80
-  tests:
-  build:
-    context: .
-    dockerfile: Dockerfile.dev
+  tests: build:.
   volumes:
     - /app/node_modules
     - .:/app
