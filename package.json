@@ -19,7 +19,7 @@
   },
   "resolutions": {
     "jest": "24.7.1",
-    "babel-jest": "24.7.1"
+    "babel-jest": "24.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
