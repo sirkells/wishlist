@@ -15,4 +15,4 @@ services:
 before_install:
   - docker build --file Dockerfile --tag app/wish .
 script:
-  - run app/wish npm run test -- --coverage
+  - docker run app/wish yarn run test -- --coverage
