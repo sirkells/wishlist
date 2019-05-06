@@ -5,5 +5,5 @@ cache:
   directories:
     - node_modules #Cache node_modules for faster builds
 script:
-  #- npm test #Runs Tests
-  - npm run build #Creats a production build
+  - yarn test #Runs Tests
+  - yarn build #Creats a production build

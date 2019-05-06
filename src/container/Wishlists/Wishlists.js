@@ -6,7 +6,7 @@ import {
   getWishlists,
   addToWishlist
 } from "../../actions/actions";
-import Product from "../Product/Product";
+import Product from "../../components/Product/Product";
 
 const mapStateToProps = state => {
   return {

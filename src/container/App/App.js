@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
-import SearchBar from "../components/SearchBar/SearchBar";
-import Products from "../components/Products/Products";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import Products from "../../components/Products/Products";
 
 import {
   setSearchTerm,
@@ -10,8 +10,8 @@ import {
   clearArticles,
   addToWishlist,
   deleteWishlist
-} from "../actions/actions";
-// import Wishlists from '../components/Wishlists/Wishlists'
+} from "../../actions/actions";
+
 
 const mapStateToProps = state => {
   return {
@@ -42,7 +42,7 @@ class App extends Component {
 
   // updateWishlist = id => this.props.addToWishlist(id);
 
-  render() {
+  render () {
     const { articles, updateSearchTerm, addToWishlist } = this.props;
     const { searchArticles } = this;
     return (
