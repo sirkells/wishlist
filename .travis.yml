@@ -8,8 +8,10 @@
 #   - yarn test #Runs Tests
 #   - yarn build #Creats a production build
 
+language: node_js
+node_js:
+  - "stable"
 sudo: required
-
 services:
   - docker
 before_install:
