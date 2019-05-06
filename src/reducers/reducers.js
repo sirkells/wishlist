@@ -5,7 +5,7 @@ import {
   FETCH_STARTED,
   SEARCH_BOX_CLEARED,
   NO_ITEM_FOUND,
-  ARTICLE_ADDED_TO_WISHLIST,
+  ADD_TO_WISHLIST,
   DELETE_WISHLIST,
   GET_WISHLISTS
 } from "../constants";
@@ -20,9 +20,9 @@ export const updateWishlist = (state = wishlistState, action = {}) => {
     case GET_WISHLISTS:
       return {
         ...state,
-        wishlistDB: JSON.parse(localStorage.getItem("data") || "[]")
+        wishlistDB: action.payload
       };
-    case ARTICLE_ADDED_TO_WISHLIST:
+    case ADD_TO_WISHLIST:
       return { ...state, wishlistDB: action.payload };
     case DELETE_WISHLIST:
       return { ...state, wishlistDB: action.payload };
@@ -57,7 +57,7 @@ export const searchArticles = (state = articlesData, action = {}) => {
     case FETCH_COMPLETED:
       return { ...state, articles: action.payload, isLoading: false };
     case FETCH_FAILED:
-      alert("Please enter a valid search word");
+      alert(action.payload);
       return {
         ...state,
         hasFailed: true,

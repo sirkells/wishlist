@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-// header is a higher order component
+// Navbar is a higher order component
 // other component are rendered under it as children
 const Navbar = props => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import Product from "../Product/Product";
 
-const Products = ({ items, updateWishlist }) => {
+const Products = ({ items, addToWishlist }) => {
   const productLists = items.map(item => {
     return (
       <Product
@@ -9,7 +9,7 @@ const Products = ({ items, updateWishlist }) => {
         id={item.productid}
         displayName={item.displayName}
         imageURL={item.imageURL}
-        updateWishlist={updateWishlist}
+        updateWishlist={addToWishlist}
         actionType="add"
         iconType={"add"}
         title={"Add to Wishlist"}

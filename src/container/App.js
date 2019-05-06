@@ -40,11 +40,11 @@ class App extends Component {
     searchTerm.length === 0 ? clearArticles() : getArticlesData(searchTerm);
   };
 
-  updateWishlist = id => this.props.addToWishlist(id);
+  // updateWishlist = id => this.props.addToWishlist(id);
 
   render() {
-    const { articles, updateSearchTerm } = this.props;
-    const { searchArticles, updateWishlist } = this;
+    const { articles, updateSearchTerm, addToWishlist } = this.props;
+    const { searchArticles } = this;
     return (
       <div className="ui container App">
         <br />
@@ -54,7 +54,7 @@ class App extends Component {
         <SearchBar update={updateSearchTerm} search={searchArticles} />
         <br />
         <br />
-        <Products items={articles} updateWishlist={updateWishlist} />
+        <Products items={articles} addToWishlist={addToWishlist} />
       </div>
     );
   }

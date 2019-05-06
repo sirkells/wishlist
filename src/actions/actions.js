@@ -5,7 +5,7 @@ import {
   FETCH_STARTED,
   SEARCH_BOX_CLEARED,
   NO_ITEM_FOUND,
-  ARTICLE_ADDED_TO_WISHLIST,
+  ADD_TO_WISHLIST,
   DELETE_WISHLIST,
   GET_WISHLISTS
 } from "../constants";
@@ -13,30 +13,41 @@ import {
 const API = "https://www.adidas.co.uk/api/search/suggestions";
 let DB = JSON.parse(localStorage.getItem("data") || "[]");
 
-const updateStore = data => localStorage.setItem("data", JSON.stringify(data));
+const updateDB = data => localStorage.setItem("data", JSON.stringify(data));
 
-const addToDB = data => {
-  DB.push(data);
-  updateStore(DB);
+const addToDB = (DB, data) => {
+  const alreadyInWishlist = DB.some(article => article.id === data.id);
+  if (!alreadyInWishlist) {
+    DB.push(data);
+    updateDB(DB);
+  }
   return DB;
 };
 
+// const addToDB = data => {
+//   if (!exists(data)) {
+//     DB.push(data);
+//     updateDB(DB);
+//     return DB;
+//   }
+// };
+
 const deleteFromDB = data => {
   DB = DB.filter(article => article.id !== data);
-  updateStore(DB);
+  updateDB(DB);
   return DB;
 };
 
 export const getWishlists = () => {
   return {
-    type: GET_WISHLISTS
-    //payload: store
+    type: GET_WISHLISTS,
+    payload: DB
   };
 };
 export const addToWishlist = article => dispatch => {
   dispatch({
-    type: ARTICLE_ADDED_TO_WISHLIST,
-    payload: addToDB(article)
+    type: ADD_TO_WISHLIST,
+    payload: addToDB(DB, article)
   });
 };
 
