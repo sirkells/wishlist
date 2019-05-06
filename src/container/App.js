@@ -46,7 +46,7 @@ class App extends Component {
     const { articles, updateSearchTerm } = this.props;
     const { searchArticles, updateWishlist } = this;
     return (
-      <div className="App">
+      <div className="ui container App">
         <br />
         <br />
         <br />

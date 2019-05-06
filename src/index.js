@@ -10,7 +10,7 @@ import "./index.css";
 import "semantic-ui-css/semantic.min.css";
 import App from "./container/App";
 import Wishlist from "./components/Wishlists/Wishlists";
-import Header from "./components/Headers/Header";
+import Navbar from "./components/Navbar/Navbar";
 import {
   changeSearchTerm,
   searchArticles,
@@ -45,17 +45,17 @@ ReactDOM.render(
         exact
         path="/"
         render={() => (
-          <Header>
+          <Navbar>
             <Provider store={store}>
               <App />
             </Provider>
-          </Header>
+          </Navbar>
         )}
       />
       <Route
         path="/wishlist"
         render={() => (
-          <Header>
+          <Navbar>
             <Provider store={store}>
               <br />
               <br />
@@ -65,7 +65,7 @@ ReactDOM.render(
               <br />
               <Wishlist />
             </Provider>
-          </Header>
+          </Navbar>
         )}
       />
     </Switch>

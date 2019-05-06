@@ -11,21 +11,20 @@ import {
 } from "../constants";
 
 const API = "https://www.adidas.co.uk/api/search/suggestions";
-let store = JSON.parse(localStorage.getItem("data") || "[]");
+let DB = JSON.parse(localStorage.getItem("data") || "[]");
+
+const updateStore = data => localStorage.setItem("data", JSON.stringify(data));
 
 const addToDB = data => {
-  store.push(data);
-  localStorage.setItem("data", JSON.stringify(store));
-  console.log(store);
-  return store;
+  DB.push(data);
+  updateStore(DB);
+  return DB;
 };
 
 const deleteFromDB = data => {
-  store = store.filter(article => article.id !== data);
-  console.log(store);
-  localStorage.setItem("data", JSON.stringify(store));
-  console.log(store);
-  return store;
+  DB = DB.filter(article => article.id !== data);
+  updateStore(DB);
+  return DB;
 };
 
 export const getWishlists = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-// import { Card, Icon, Image } from "semantic-ui-react";
+
 const Product = props => {
   const {
     imageURL,
@@ -31,7 +31,6 @@ const Product = props => {
         <i className={`${iconType} icon`} />
         {title}
       </div>
-      {console.log()}
     </div>
   );
 };

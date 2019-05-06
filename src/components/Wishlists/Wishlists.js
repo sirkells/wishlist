@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   deleteWishlist,
   getWishlists,
@@ -46,16 +47,27 @@ class WishLists extends Component {
       );
     });
     return (
-      <div>
-        <button
-          className="ui red button"
-          onClick={() => {
-            localStorage.clear();
-            this.props.getWishlists();
-          }}
-        >
-          Remove All
-        </button>
+      <div className="ui container">
+        {wishlistDB.length > 0 ? (
+          <button
+            className="ui red button"
+            onClick={() => {
+              localStorage.clear();
+              this.props.getWishlists();
+            }}
+          >
+            Remove All
+          </button>
+        ) : (
+          <div>
+            <h2>You currently have no wishes...</h2>
+            <button className="ui button">
+              <Link to="/">Make a Wish</Link>
+            </button>
+          </div>
+        )}
+        <br />
+        <br />
         <div className="ui centered cards">{wishlistsArray}</div>
       </div>
     );
