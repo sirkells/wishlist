@@ -1,9 +1,17 @@
-language: node_js
-node_js:
-  - "stable"
-cache:
-  directories:
-    - node_modules #Cache node_modules for faster builds
+# language: node_js
+# node_js:
+#   - "stable"
+# cache:
+#   directories:
+#     - node_modules #Cache node_modules for faster builds
+# script:
+#   - yarn test #Runs Tests
+#   - yarn build #Creats a production build
+
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t wishlist_prod .
 script:
-  - yarn test #Runs Tests
-  - yarn build #Creats a production build
+  - docker run wishlist_prod yarn run test -- --coverage
