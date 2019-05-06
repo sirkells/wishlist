@@ -17,6 +17,10 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1"
   },
+  "resolutions": {
+    "jest": "24.7.1",
+    "babel-jest": "24.7.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
