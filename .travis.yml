@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-  - 8
+  - "stable"
 cache:
   directories:
-    - node_modules
+    - node_modules #Cache node_modules for faster builds
 script:
-  - npm run build
-  - npm test
+  - bash rm -rf ~/node_modules/babel-jest ~/node_modules/jest
+  - yarn test #Runs Tests
+  - yarn build #Creats a production build
