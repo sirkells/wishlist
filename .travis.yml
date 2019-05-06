@@ -8,13 +8,6 @@
 #   - yarn test #Runs Tests
 #   - yarn build #Creats a production build
 
-language: node_js
-node_js:
-  - "stable"
 sudo: required
 services:
   - docker
-before_install:
-  - docker build --file Dockerfile --tag app/wish .
-script:
-  - docker run app/wish yarn run test -- --coverage
