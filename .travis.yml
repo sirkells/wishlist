@@ -14,4 +14,4 @@ services:
 before_install:
   - docker build -t wishlist .
 script:
-  - docker run wishlist yarn test -- --coverage
+  - docker run wishlist yarn test

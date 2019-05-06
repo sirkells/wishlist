@@ -5,11 +5,6 @@ services:
     restart: always
     ports:
       - 8080:80
-  tests: build:.
-  volumes:
-    - /app/node_modules
-    - .:/app
-  command: ["yarn", "test"]
 # version: "3"
 # services:
 #   web:
