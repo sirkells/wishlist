@@ -11,3 +11,7 @@
 sudo: required
 services:
   - docker
+before_install:
+  - docker build --file Dockerfile.dev --tag testapp .
+script:
+  - docker run testapp yarn run test --coverage
