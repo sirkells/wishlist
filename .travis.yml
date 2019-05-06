@@ -12,6 +12,7 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -t wishlist .
+  - docker build app/wishlist .
+
 script:
-  - docker run wishlist yarn test
+  - docker run app/wishlist yarn run testc

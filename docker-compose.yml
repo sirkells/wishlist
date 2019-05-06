@@ -5,6 +5,9 @@ services:
     restart: always
     ports:
       - 8080:80
+    volumes:
+      - .:/app
+      - /app/node_modules
 # version: "3"
 # services:
 #   web:
