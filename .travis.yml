@@ -18,6 +18,7 @@ script:
 before_deploy:
   - docker build -t prod .
 deploy:
+  skip_cleanup: true
   provider: elasticbeanstalk
   access_key_id: $ACCESS_KEY_ID
   secret_access_key:
@@ -26,6 +27,7 @@ deploy:
   app: "wishlist"
   env: "Wishlist-env"
   bucket_name: "elasticbeanstalk-us-east-2-275017868740"
+  only_create_app_version: true
 # deploy:
 #   provider: elasticbeanstalk
 #   region: "us-east-2"
