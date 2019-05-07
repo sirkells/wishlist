@@ -10,8 +10,10 @@ before_install:
 #Run our test Docker container
 script:
   - docker run wishlist-test yarn test --coverage
-#only_create_app_version: "true"
 
+#Build our deployment container
+before_deploy:
+  - docker build -t prod .
 deploy:
   provider: elasticbeanstalk
   access_key_id:
