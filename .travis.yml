@@ -20,8 +20,8 @@ deploy:
   bucket_path: "wishlist"
   on:
     branch: master
-  access_key: AWS_ACCESS_KEY_ID
-  secret_key:
+  access_key_id: AWS_ACCESS_KEY_ID
+  secret_access_key:
     secure: $AWS_SECRET
 # language: node_js
 # node_js:
