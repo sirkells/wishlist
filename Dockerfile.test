@@ -8,4 +8,4 @@ RUN yarn
 
 COPY ./ /app/
 
-CMD ["yarn", "run", "test", "--", "--coverage"]
+CMD ["yarn", "test", "--coverage", "--forceExit"]
