@@ -8,6 +8,14 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+  # tests:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - /app/node_modules
+  #     - .:/app
+  #   command: ["yarn", "test"]
 # version: "3"
 # services:
 #   web:
@@ -19,11 +27,4 @@ services:
 #     volumes:
 #       - /app/node_modules
 #       - .:/app
-# tests:
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.dev
-#   volumes:
-#     - /app/node_modules
-#     - .:/app
-#   command: ["yarn", "test"]
+

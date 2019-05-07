@@ -1,7 +1,0 @@
-FROM tiangolo/node-frontend:10 as build-stage
-
-WORKDIR /app
-COPY package.json /app/
-RUN yarn install
-COPY ./ /app/
-CMD ["yarn", "start"]
