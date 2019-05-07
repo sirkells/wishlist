@@ -1,8 +1,6 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import { shallow, configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-configure({ adapter: new Adapter() });
+import { shallow } from "enzyme";
 
 it("renders without crashing", () => {
   shallow(<SearchBar />);

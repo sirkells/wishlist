@@ -3,6 +3,9 @@ sudo: required
 #Tell TravisCI that we're using docker to run our tests
 services:
   - docker
+# env:
+#   global:
+#     CACHE_IMAGE: sirkells/docker-ci-cache
 #Build our test Docker container
 before_install:
   - docker build -t wishlist-test -f Dockerfile.test .
