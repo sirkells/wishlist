@@ -1,21 +1,40 @@
 version: "3"
 services:
-  prod:
-    build: .
-    restart: always
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
     ports:
-      - 8080:80
+      - 3000:3000
     volumes:
-      - .:/app
       - /app/node_modules
-  # tests:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.dev
-  #   volumes:
-  #     - /app/node_modules
-  #     - .:/app
-  #   command: ["yarn", "test"]
+      - .:/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["yarn", "test"]
+# version: "3"
+# services:
+#   prod:
+#     build: .
+#     restart: always
+#     ports:
+#       - 8080:80
+#     volumes:
+#       - .:/app
+#       - /app/node_modules
+# tests:
+#   build:
+#     context: .
+#     dockerfile: Dockerfile.dev
+#   volumes:
+#     - /app/node_modules
+#     - .:/app
+#   command: ["yarn", "test"]
 # version: "3"
 # services:
 #   web:

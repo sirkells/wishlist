@@ -9,7 +9,7 @@ before_install:
 
 #Run our test Docker container
 script:
-  - docker run wishlist-test
+  - docker run wishlist-test yarn test --coverage
 # language: node_js
 # node_js:
 #   - "stable"
