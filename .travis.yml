@@ -13,16 +13,26 @@ script:
 
 deploy:
   provider: elasticbeanstalk
+  access_key_id:
+    secure: $ACCESS_KEY_ID
+  secret_access_key:
+    secure: $SECRET_ACCESS_KEY
   region: "us-east-2"
   app: "wishlist"
   env: "Wishlist-env"
   bucket_name: "elasticbeanstalk-us-east-2-275017868740"
-  bucket_path: "wishlist"
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key:
-    secure: $AWS_SECRET
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-east-2"
+#   app: "wishlist"
+#   env: "Wishlist-env"
+#   bucket_name: "elasticbeanstalk-us-east-2-275017868740"
+#   bucket_path: "wishlist"
+#   on:
+#     branch: master
+#   access_key_id: $AWS_ACCESS_KEY_ID
+#   secret_access_key:
+#     secure: $AWS_SECRET
 # language: node_js
 # node_js:
 #   - "stable"
