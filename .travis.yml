@@ -16,9 +16,9 @@ before_deploy:
   - docker build -t prod .
 deploy:
   provider: elasticbeanstalk
-  access_key_id:
-    secure: $ACCESS_KEY_ID
-  secret_access_key: $SECRET_ACCESS_KEY
+  access_key_id: $ACCESS_KEY_ID
+  secret_access_key:
+    secure: $SECRET_ACCESS_KEY
   region: "us-east-2"
   app: "wishlist"
   env: "Wishlist-env"
