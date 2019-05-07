@@ -10,18 +10,18 @@ before_install:
 #Run our test Docker container
 script:
   - docker run wishlist-test yarn test --coverage
+only_create_app_version: "true"
 
 deploy:
-  only_create_app_version: "true"
-  # provider: elasticbeanstalk
-  # access_key_id:
-  #   secure: $ACCESS_KEY_ID
-  # secret_access_key:
-  #   secure: $SECRET_ACCESS_KEY
-  # region: "us-east-2"
-  # app: "wishlist"
-  # env: "Wishlist-env"
-  # bucket_name: "elasticbeanstalk-us-east-2-275017868740"
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: $ACCESS_KEY_ID
+  secret_access_key:
+    secure: $SECRET_ACCESS_KEY
+  region: "us-east-2"
+  app: "wishlist"
+  env: "Wishlist-env"
+  bucket_name: "elasticbeanstalk-us-east-2-275017868740"
 # deploy:
 #   provider: elasticbeanstalk
 #   region: "us-east-2"
