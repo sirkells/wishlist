@@ -10,6 +10,19 @@ before_install:
 #Run our test Docker container
 script:
   - docker run wishlist-test yarn test --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "wishlist"
+  env: "Wishlist-env"
+  bucket_name: "elasticbeanstalk-us-east-2-275017868740"
+  bucket_path: "wishlist"
+  on:
+    branch: master
+  access_key: AWS_ACCESS_KEY_ID
+  secret_key:
+    secure: $AWS_SECRET
 # language: node_js
 # node_js:
 #   - "stable"
