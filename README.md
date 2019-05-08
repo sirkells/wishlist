@@ -1,6 +1,4 @@
-# Wishlist
-
-[![Build Status](https://travis-ci.org/sirkells/wishlist.svg?branch=master)](https://travis-ci.org/sirkells/wishlist)
+# Wishlist [![Build Status](https://travis-ci.org/sirkells/wishlist.svg?branch=master)](https://travis-ci.org/sirkells/wishlist)
 
 ## Table of contents
 * [General info](#general-info)
