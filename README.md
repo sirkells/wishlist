@@ -61,28 +61,21 @@ To setup locally:
 
 ## CI/CD
 
-To setup for CI/CD for production Travis
+To setup for CI/CD for production with Travis and AWS
 
-- Make sure your project is on github
 - Create a [Travis](https://travis-ci.org/) account if you dont have one and follow the instructions
-- The Travis config is on the .travis.yml file
-- Go to your account on Travis and start build
-  https://docs.travis-ci.com/user/deployment/elasticbeanstalk/
-  https://aws.amazon.com/
-
-## Deployment
-
-To setup deployment to AWS Elastic Bean Stalk:
-
 - Create an [AWS](https://aws.amazon.com/) account if you dont have one and follow instruction to setup ELasticbeanstalk application
 - See the section about [Travis-Elasticbeanstalk deployment](https://docs.travis-ci.com/user/deployment/elasticbeanstalk/) for more information.
 - Copy the deployment config from the deployConfig file
-- Add the copied contents to the .travis.yml file after the last command as shown in the image:
+- Add the copied contents to the .travis.yml file
+- Edit the details accordingly
+- Your .travis.yml file should be similar to the image below:
 
 ![Example screenshot](./img/Screenshot-config.png)
 
-- Edit the details according to yours
-
+- Make sure your project is on github
+- Go to your Travis account and start build
+- Travis automaticaly runs test whenever you make changes
 
 ## Test
 
