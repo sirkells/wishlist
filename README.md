@@ -1,128 +1,94 @@
-# Wishlist
+# Wishlist [![Build Status](https://travis-ci.org/sirkells/wishlist.svg?branch=master)](https://travis-ci.org/sirkells/wishlist)
 
-[![Build Status](https://travis-ci.org/sirkells/wishlist.svg?branch=master)](https://travis-ci.org/sirkells/wishlist)
+> A web app that allows search and add items to your wishlist
 
-# Project Title
+## Table of contents
 
-One Paragraph of project description goes here
+- [General info](#general-info)
+- [Screenshots](#screenshots)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Docker](#docker)
+- [CI/CD](#CI/CD)
+- [Deployment](#deployment)
+- [Test](#test)
 
-## Getting Started
+## General info
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Add more general information about project. What the purpose of the project is? Motivation?
 
-### Prerequisites
+## Screenshots
 
-What things you need to install the software and how to install them
+![Example screenshot](./img/screenshot.png)
 
-```
-Give examples
-```
+## Technologies
 
-### Installing
+- React
+- React Router
+- Redux
+- Jest
+- Enzyme
+- Semantic UI
+- Docker
+- TravisCI
 
-A step by step series of examples that tell you how to get a development env running
+## Setup
 
-Say what the step will be
+To get the frontend running locally:
 
-```
-Give the example
-```
+- Clone this repo
+- cd into the cloned repo
+- `yarn` to install all required dependencies
+- `yarn start` to start the local server
 
-And repeat
+Local web server will use port 3000
 
-```
-until finished
-```
+## Docker
 
-End with an example of getting some data out of the system or using it for a little demo
+To setup locally:
 
-## Running the tests
+- Download [Docker](https://docs.docker.com/) if you dont have it
+- Make sure Docker is running
+- Clone this repo
+- cd into the project
+- run `docker-compose up` in your terminal to setup, build and run image. Tjis may take some time to complete
+- When complete go to your localhost on port 8080
 
-Explain how to run the automated tests for this system
+## CI/CD
 
-### Break down into end to end tests
+To setup for CI/CD for production Travis
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+- Make sure your project is on github
+- Create a [Travis](https://travis-ci.org/) account if you dont have one and follow the instructions
+- The Travis config is on the .travis.yml file
+- Go to your account on Travis and start build
+  https://docs.travis-ci.com/user/deployment/elasticbeanstalk/
+  https://aws.amazon.com/
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+To setup deployment to AWS Elastic Bean Stalk:
 
-## Built With
+- Create an [AWS](https://aws.amazon.com/) account if you dont have one and follow instruction to setup ELasticbeanstalk application
+- See the section about [Travis-Elasticbeanstalk deployment](https://docs.travis-ci.com/user/deployment/elasticbeanstalk/) for more information.
+- Copy the deployment config from the deployConfig file
+- Add the copied contents to the .travis.yml file after the last command like this
+  `before_deploy:
+  - docker build -t prod .``deploy:
+    skip_cleanup: true
+    provider: elasticbeanstalk
+    access_key_id: $ACCESS_KEY_ID
+  secret_access_key:
+    secure: $SECRET_ACCESS_KEY
+    region: "us-east-2"
+    app: "wishlist"
+    env: "Wishlist-env"
+    bucket_name: "elasticbeanstalk-us-east-2-275017868740" `
+- Edit the details according to yours
+-
 
-- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-- [Maven](https://maven.apache.org/) - Dependency Management
-- [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-- **Billie Thompson** - _Initial work_ - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
-## Available Scripts
+## Test
 
 In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `yarn test` to run tests
