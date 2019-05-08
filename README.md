@@ -19,7 +19,7 @@ Add more general information about project. What the purpose of the project is? 
 
 ## Screenshots
 
-![Example screenshot](./img/screenshot_search.png)
+![Example screenshot](./img/Screenshot_search.png)
 
 ## Technologies
 
