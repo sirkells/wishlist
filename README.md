@@ -7,6 +7,9 @@
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [Docker](#docker)
+* [CI/CD](#CI/CD)
+* [Deployment](#deployment)
 * [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
@@ -29,16 +32,20 @@ Add more general information about project. What the purpose of the project is? 
 
 
 ## Setup
+
 To get the frontend running locally:
 
 - Clone this repo
-- cd into the project
-- `npm install` or `yarn` to install all required dependencies
-- `npm start` or `yarn start` to start the local server 
+- cd into the cloned repo
+- `yarn` to install all required dependencies
+- `yarn start` to start the local server 
+- `yarn test` to run tests
 
 Local web server will use port 3000 
 
-To use Docker locally:
+## Docker
+
+To setup locally:
 - Download [Docker](https://docs.docker.com/) if you dont have it
 - Make sure Docker is running
 - Clone this repo
@@ -47,7 +54,33 @@ To use Docker locally:
 - When complete go to your localhost on port 8080
 
 
- 
+
+## CI/CD
+To setup for CI/CD for production Travis
+- Make sure your project is on github
+- Create a [Travis](https://travis-ci.org/) account if you dont have one and follow the instructions
+- The Travis config is on the .travis.yml file 
+- Start build on Travis
+https://docs.travis-ci.com/user/deployment/elasticbeanstalk/
+https://aws.amazon.com/
+## Deployment
+To setup deployment to AWS Elastic Bean Stalk:
+
+- Create an [AWS](https://aws.amazon.com/) account if you dont have one and follow instruction to setup ELasticbeanstalk application 
+
+- before_deploy:
+    docker build -t prod .
+# deploy:
+#   skip_cleanup: true
+#   provider: elasticbeanstalk
+#   access_key_id: $ACCESS_KEY_ID
+#   secret_access_key:
+#     secure: $SECRET_ACCESS_KEY
+#   region: "us-east-2"
+#   app: "wishlist"
+#   env: "Wishlist-env"
+#   bucket_name: "elasticbeanstalk-us-east-2-275017868740"
+
 
 ## Code Examples
 Show examples of usage:
@@ -66,11 +99,6 @@ To-do list:
 ## Status
 Project is: _in progress_, _finished_, _no longer continue_ and why?
 
-## Inspiration
-Add here credits. Project inspired by..., based on...
-
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
 
 ```
 $ cd ../lorem
