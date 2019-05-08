@@ -3,26 +3,9 @@ sudo: required
 #Tell TravisCI that we're using docker to run our tests
 services:
   - docker
-# env:
-#   global:
-#     CACHE_IMAGE: sirkells/docker-ci-cache
-#Build our test Docker container
 before_install:
   - docker build -t wishlist-test -f Dockerfile.test .
 
 #Run our test Docker container
 script:
   - docker run wishlist-test yarn test --coverage
-Build  deployment container
-before_deploy:
-  - docker build -t prod .
-deploy:
-  skip_cleanup: true
-  provider: elasticbeanstalk
-  access_key_id: $ACCESS_KEY_ID
-  secret_access_key:
-    secure: $SECRET_ACCESS_KEY
-  region: "us-east-2"
-  app: "wishlist"
-  env: "Wishlist-env"
-  bucket_name: "elasticbeanstalk-us-east-2-275017868740"
