@@ -10,7 +10,6 @@
 - [Setup](#setup)
 - [Docker](#docker)
 - [CI/CD](#CI/CD)
-- [Deployment](#deployment)
 - [Test](#test)
 
 ## General info
@@ -45,6 +44,7 @@ To get the frontend running locally:
 - cd into the cloned repo
 - `yarn` to install all required dependencies
 - `yarn start` to start the local server
+- `yarn test` to run tests
 
 Local web server will use port 3000
 
@@ -77,8 +77,3 @@ To setup for CI/CD for production with Travis and AWS
 - Go to your Travis account and start build
 - Travis automaticaly runs test whenever you make changes
 
-## Test
-
-In the project directory, you can run:
-
-- `yarn test` to run tests
