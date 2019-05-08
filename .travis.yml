@@ -13,16 +13,16 @@ before_install:
 #Run our test Docker container
 script:
   - docker run wishlist-test yarn test --coverage
-#Build our deployment container
-# before_deploy:
-#   - docker build -t prod .
-# deploy:
-#   skip_cleanup: true
-#   provider: elasticbeanstalk
-#   access_key_id: $ACCESS_KEY_ID
-#   secret_access_key:
-#     secure: $SECRET_ACCESS_KEY
-#   region: "us-east-2"
-#   app: "wishlist"
-#   env: "Wishlist-env"
-#   bucket_name: "elasticbeanstalk-us-east-2-275017868740"
+Build  deployment container
+before_deploy:
+  - docker build -t prod .
+deploy:
+  skip_cleanup: true
+  provider: elasticbeanstalk
+  access_key_id: $ACCESS_KEY_ID
+  secret_access_key:
+    secure: $SECRET_ACCESS_KEY
+  region: "us-east-2"
+  app: "wishlist"
+  env: "Wishlist-env"
+  bucket_name: "elasticbeanstalk-us-east-2-275017868740"
