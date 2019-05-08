@@ -37,6 +37,16 @@ To get the frontend running locally:
 - `npm start` or `yarn start` to start the local server 
 
 Local web server will use port 3000 
+
+To use Docker locally:
+- Download [Docker](https://docs.docker.com/) if you dont have it
+- Make sure Docker is running
+- Clone this repo
+- cd into the project
+- run `docker-compose up` in your terminal to setup, build and run image. Tjis may take some time to complete
+- When complete go to your localhost on port 8080
+
+
  
 
 ## Code Examples
