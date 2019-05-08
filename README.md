@@ -10,7 +10,7 @@
 - [Setup](#setup)
 - [Docker](#docker)
 - [CI/CD](#CI/CD)
-- [Test](#test)
+
 
 ## General info
 
