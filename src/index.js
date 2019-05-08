@@ -35,12 +35,7 @@ ReactDOM.render(
         render={() => (
           <Navbar>
             <Provider store={store}>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
+
               <Wishlist />
             </Provider>
           </Navbar>

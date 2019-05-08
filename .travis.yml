@@ -27,8 +27,9 @@ deploy:
   app: "wishlist"
   env: "Wishlist-env"
   bucket_name: "elasticbeanstalk-us-east-2-275017868740"
+  #prevents from deploying
   only_create_app_version: true
-# deploy:
+  # deploy:
 #   provider: elasticbeanstalk
 #   region: "us-east-2"
 #   app: "wishlist"

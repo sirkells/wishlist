@@ -1,5 +1,5 @@
 import {
-  CHANGE_SEARCH_TERM,
+  UPDATE_SEARCH_TERM,
   FETCH_COMPLETED,
   FETCH_FAILED,
   FETCH_STARTED,
@@ -10,6 +10,7 @@ import {
   GET_WISHLISTS
 } from "../constants";
 
+const errorMessage = "Enter a valid product name";
 const API = "https://www.adidas.co.uk/api/search/suggestions";
 let DB = JSON.parse(localStorage.getItem("data") || "[]");
 
@@ -58,9 +59,9 @@ export const deleteWishlist = id => dispatch => {
   });
 };
 
-export const setSearchTerm = text => {
+export const updateSearchTerm = text => {
   return {
-    type: CHANGE_SEARCH_TERM,
+    type: UPDATE_SEARCH_TERM,
     payload: text
   };
 };
@@ -84,18 +85,18 @@ export const getArticlesFromAPI = searchQuery => dispatch => {
           type: FETCH_COMPLETED,
           payload: productsData
         });
-        console.log(productsData);
       } else {
         dispatch({
           type: NO_ITEM_FOUND
         });
-        // alert("No item found for searched word");
+        alert("No item found for searched word");
       }
     })
-    .catch(err =>
+    .catch(err => {
+      alert(errorMessage);
       dispatch({
         type: FETCH_FAILED,
-        payload: err.message
-      })
-    );
+        payload: err
+      });
+    });
 };

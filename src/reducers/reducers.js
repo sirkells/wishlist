@@ -1,5 +1,5 @@
 import {
-  CHANGE_SEARCH_TERM,
+  UPDATE_SEARCH_TERM,
   FETCH_COMPLETED,
   FETCH_FAILED,
   FETCH_STARTED,
@@ -35,9 +35,9 @@ const initialState = {
   searchTerm: ""
 };
 
-export const changeSearchTerm = (state = initialState, action = {}) => {
+export const updateSearchTerm = (state = initialState, action = {}) => {
   switch (action.type) {
-    case CHANGE_SEARCH_TERM:
+    case UPDATE_SEARCH_TERM:
       return { ...state, searchTerm: action.payload };
     default:
       return state;
@@ -46,22 +46,18 @@ export const changeSearchTerm = (state = initialState, action = {}) => {
 
 const articlesData = {
   articles: [],
-  isLoading: false,
-  hasFailed: false,
   errorMessage: ""
 };
 export const searchArticles = (state = articlesData, action = {}) => {
   switch (action.type) {
     case FETCH_STARTED:
-      return { ...state, isLoading: true };
+      return { ...state };
     case FETCH_COMPLETED:
-      return { ...state, articles: action.payload, isLoading: false };
+      return { ...state, articles: action.payload };
     case FETCH_FAILED:
-      alert(action.payload);
+      console.log(action.payload);
       return {
         ...state,
-        hasFailed: true,
-        isLoading: false,
         errorMessage: action.payload,
         articles: []
       };

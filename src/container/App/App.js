@@ -5,20 +5,17 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Products from "../../components/Products/Products";
 
 import {
-  setSearchTerm,
+  updateSearchTerm,
   getArticlesFromAPI,
   clearArticles,
   addToWishlist,
   deleteWishlist
 } from "../../actions/actions";
 
-
 const mapStateToProps = state => {
   return {
-    searchTerm: state.changeSearchTerm.searchTerm,
+    searchTerm: state.updateSearchTerm.searchTerm,
     articles: state.searchArticles.articles,
-    isLoading: state.searchArticles.isLoading,
-    hasFailed: state.searchArticles.hasFailed,
     errorMessage: state.searchArticles.errorMessage,
     DB: state.updateWishlist.wishlistDB
   };
@@ -26,7 +23,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateSearchTerm: event => dispatch(setSearchTerm(event.target.value)),
+    updateSearchTerm: event => dispatch(updateSearchTerm(event.target.value)),
     getArticlesData: searchTerm => dispatch(getArticlesFromAPI(searchTerm)),
     clearArticles: () => dispatch(clearArticles()),
     addToWishlist: data => dispatch(addToWishlist(data)),
@@ -42,19 +39,15 @@ class App extends Component {
 
   // updateWishlist = id => this.props.addToWishlist(id);
 
-  render () {
+  render() {
     const { articles, updateSearchTerm, addToWishlist } = this.props;
     const { searchArticles } = this;
     return (
       <div className="ui container App">
-        <br />
-        <br />
-        <br />
-        <br />
         <SearchBar update={updateSearchTerm} search={searchArticles} />
         <br />
         <br />
-        <Products items={articles} addToWishlist={addToWishlist} />
+        <Products articles={articles} addToWishlist={addToWishlist} />
       </div>
     );
   }

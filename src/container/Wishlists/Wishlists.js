@@ -31,13 +31,13 @@ class WishLists extends Component {
   // updateWishlist = id => this.props.deleteWishlist(id);
   render() {
     const { wishlistDB, deleteWishlist } = this.props;
-    const wishlistsArray = wishlistDB.map(item => {
+    const wishlistsArray = wishlistDB.map(wishlist => {
       return (
         <Product
-          key={item.id}
-          id={item.id}
-          displayName={item.displayName}
-          imageURL={item.imageURL}
+          key={wishlist.id}
+          id={wishlist.id}
+          displayName={wishlist.displayName}
+          imageURL={wishlist.imageURL}
           iconType={"trash alternate outline"}
           color={"red"}
           title={"Remove from Wishlists"}

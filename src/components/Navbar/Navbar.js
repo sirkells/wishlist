@@ -19,7 +19,12 @@ const Navbar = props => {
           </nav>
         </header>
       </div>
-
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       {props.children}
     </div>
   );

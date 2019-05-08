@@ -1,14 +1,14 @@
 import React from "react";
 import Product from "../Product/Product";
 
-const Products = ({ items, addToWishlist }) => {
-  const productLists = items.map(item => {
+const Products = ({ articles, addToWishlist }) => {
+  const productLists = articles.map(article => {
     return (
       <Product
-        key={item.productid}
-        id={item.productid}
-        displayName={item.displayName}
-        imageURL={item.imageURL}
+        key={article.productid}
+        id={article.productid}
+        displayName={article.displayName}
+        imageURL={article.imageURL}
         updateWishlist={addToWishlist}
         actionType="add"
         iconType={"add"}

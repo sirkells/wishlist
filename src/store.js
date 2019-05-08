@@ -2,14 +2,14 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import {
-  changeSearchTerm,
+  updateSearchTerm,
   searchArticles,
   updateWishlist
 } from "./reducers/reducers";
 
 const logger = createLogger();
 const rootreducers = combineReducers({
-  changeSearchTerm,
+  updateSearchTerm,
   searchArticles,
   updateWishlist
 });
