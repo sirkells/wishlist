@@ -19,10 +19,12 @@ Add more general information about project. What the purpose of the project is? 
 
 ## Screenshots
 - Homepage
+
 ![Example screenshot](./img/Screenshot_search.png)
 
 - Wishlists Page
-![Example screenshot](./img/Screenshot_search.png)
+
+![Example screenshot](./img/Screenshot_wishlists.png)
 
 ## Technologies
 
