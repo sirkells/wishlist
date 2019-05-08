@@ -20,14 +20,14 @@ Add more general information about project. What the purpose of the project is? 
 ![Example screenshot](./img/screenshot.png)
 
 ## Technologies
-* React - version 16.8.6
-* Redux - version 4.0.1
-* Jest -
-* Enzyme - 
-* Semantic UI - version 2.4.1
-* Docker -
-* TravisCI -
-
+* React
+* React Router
+* Redux
+* Jest
+* Enzyme
+* Semantic UI
+* Docker
+* TravisCI
 
 ## Setup
 
