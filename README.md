@@ -1,7 +1,6 @@
 # Wishlist [![Build Status](https://travis-ci.org/sirkells/wishlist.svg?branch=master)](https://travis-ci.org/sirkells/wishlist)
 
-# Project Name
-> Here goes your awesome project description!
+> A web app that allows search and add items to your wishlist
 
 ## Table of contents
 * [General info](#general-info)
@@ -20,12 +19,25 @@ Add more general information about project. What the purpose of the project is? 
 ![Example screenshot](./img/screenshot.png)
 
 ## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* React - version 16.8.6
+* Redux - version 4.0.1
+* Jest -
+* Enzyme - 
+* Semantic UI - version 2.4.1
+* Docker -
+* TravisCI -
+
 
 ## Setup
-Describe how to install / setup your local environement / add link to demo version.
+To get the frontend running locally:
+
+- Clone this repo
+- cd into the project
+- `npm install` or `yarn` to install all required dependencies
+- `npm start` or `yarn start` to start the local server 
+
+Local web server will use port 3000 
+ 
 
 ## Code Examples
 Show examples of usage:
