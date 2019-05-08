@@ -77,20 +77,12 @@ To setup deployment to AWS Elastic Bean Stalk:
 - Create an [AWS](https://aws.amazon.com/) account if you dont have one and follow instruction to setup ELasticbeanstalk application
 - See the section about [Travis-Elasticbeanstalk deployment](https://docs.travis-ci.com/user/deployment/elasticbeanstalk/) for more information.
 - Copy the deployment config from the deployConfig file
-- Add the copied contents to the .travis.yml file after the last command like this
-  `before_deploy:
-  - docker build -t prod .``deploy:
-    skip_cleanup: true
-    provider: elasticbeanstalk
-    access_key_id: $ACCESS_KEY_ID
-  secret_access_key:
-    secure: $SECRET_ACCESS_KEY
-    region: "us-east-2"
-    app: "wishlist"
-    env: "Wishlist-env"
-    bucket_name: "elasticbeanstalk-us-east-2-275017868740" `
+- Add the copied contents to the .travis.yml file after the last command as shown in the image:
+
+![Example screenshot](./img/Screenshot-config.png)
+
 - Edit the details according to yours
--
+
 
 ## Test
 
