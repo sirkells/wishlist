@@ -1,7 +1,5 @@
-before_deploy:
-  - docker build -t prod .
+
 deploy:
-  skip_cleanup: true
   provider: elasticbeanstalk
   access_key_id: $ACCESS_KEY_ID
   secret_access_key:

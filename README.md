@@ -11,12 +11,12 @@
 - [Docker](#docker)
 - [CI/CD](#CI/CD)
 
-
 ## General info
 
 Add more general information about project. What the purpose of the project is? Motivation?
 
 ## Screenshots
+
 - Homepage
 
 ![Example screenshot](./img/Screenshot_search.png)
@@ -67,13 +67,12 @@ To setup for CI/CD for production with Travis and AWS
 - Create an [AWS](https://aws.amazon.com/) account if you dont have one and follow instruction to setup ELasticbeanstalk application
 - See the section about [Travis-Elasticbeanstalk deployment](https://docs.travis-ci.com/user/deployment/elasticbeanstalk/) for more information.
 - Copy the deployment config from the deployConfig file
-- Add the copied contents to the .travis.yml file
+- Update the .travis.yml file by adding the deployment configuration found in the deployConfig file
 - Edit the details accordingly
-- Your .travis.yml file should be similar to the image below:
+- Your .travis.yml file should now be similar to the image below:
 
 ![Example screenshot](./img/Screenshot-config.png)
 
 - Make sure your project is on github
 - Go to your Travis account and start build
-- Travis automaticaly runs test whenever you make changes
-
+- Travis automaticaly runs test whenever you make changes to the master

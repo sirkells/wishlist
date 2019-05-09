@@ -7,13 +7,4 @@ before_install:
   - docker build -t prod .
 script:
   - docker run -d --restart=always prod
-
-deploy:
-  provider: elasticbeanstalk
-  access_key_id: $ACCESS_KEY_ID
-  secret_access_key:
-    secure: $SECRET_ACCESS_KEY
-  region: "us-east-2"
-  app: "wishlist"
-  env: "Wishlist-env"
-  bucket_name: "elasticbeanstalk-us-east-2-275017868740"
+# Add deploy config below
