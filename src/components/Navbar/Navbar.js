@@ -16,9 +16,6 @@ const Navbar = props => {
             <Link className="link dim white dib mr3 fw6" to="/wishlist">
               Wishlist
             </Link>
-            <Link className="link dim white dib mr3 fw6" to="/wishlist">
-              Change Test
-            </Link>
           </nav>
         </header>
       </div>
