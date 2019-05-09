@@ -4,16 +4,12 @@
 
 ## Table of contents
 
-- [General info](#general-info)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Docker](#docker)
 - [CI/CD](#CI/CD)
 
-## General info
-
-Add more general information about project. What the purpose of the project is? Motivation?
 
 ## Screenshots
 
