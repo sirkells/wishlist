@@ -7,6 +7,8 @@ before_install:
   - docker build -t prod .
 script:
   - docker run -d --restart=always -p 8080:80 prod
+before_deploy:	
+  - docker build -t prod .
 deploy:
   skip_cleanup: true
   provider: elasticbeanstalk
