@@ -3,8 +3,10 @@ sudo: required
 #Tell TravisCI that we're using docker to run our tests
 services:
   - docker
-before_deploy:
+before_install:
   - docker build -t prod .
+script:
+  - docker run prod
 deploy:
   skip_cleanup: true
   provider: elasticbeanstalk
