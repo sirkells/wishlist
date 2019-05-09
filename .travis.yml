@@ -6,11 +6,9 @@ services:
 before_install:
   - docker build -t prod .
 script:
-  - docker run -d --restart=always -p 8080:80 prod
-before_deploy:	
-  - docker build -t prod .
+  - docker run -d prod
+
 deploy:
-  skip_cleanup: true
   provider: elasticbeanstalk
   access_key_id: $ACCESS_KEY_ID
   secret_access_key:
