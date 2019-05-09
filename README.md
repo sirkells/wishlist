@@ -52,7 +52,7 @@ To setup locally:
 - Make sure Docker is running
 - Clone this repo
 - cd into the project
-- run `docker-compose up` in your terminal to setup, build and run image. Tjis may take some time to complete
+- run `docker-compose up` in your terminal to setup, build and run image. This may take some time to complete
 - When complete go to your localhost on port 8080
 
 ## CI/CD
@@ -71,4 +71,4 @@ To setup for CI/CD for production with Travis and AWS
 
 - Make sure your project is on github
 - Go to your Travis account and start build
-- Travis automaticaly runs test whenever you make changes to the master
+- Travis automaticaly runs test and re-deploy app whenever you make changes to the master
